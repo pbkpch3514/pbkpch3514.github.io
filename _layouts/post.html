@@ -9,7 +9,6 @@ tail_includes:
 script_includes:
   - comment
 ---
-
 {% include lang.html %}
 
 {% include toc-status.html %}
@@ -177,3 +176,19 @@ script_includes:
   </div>
   <!-- div.post-tail-wrapper -->
 </article>
+
+<script
+  type="text/javascript"
+  async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"
+></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [
+        ['$', '$'],
+        ['\\(', '\\)']
+      ]
+    }
+  });
+</script>
