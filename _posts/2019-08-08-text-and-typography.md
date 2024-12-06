@@ -1,200 +1,138 @@
 ---
-title: Text and Typography
-description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
-author: cotes
-date: 2019-08-08 11:33:00 +0800
-categories: [Blogging, Demo]
-tags: [typography]
+title: 랜덤변수가 뭔데?
+description: 랜덤변수를 엄밀하게 기술하기
+author: pbkpch3514
+date: 2024-12-06 12:00:00 +0900
+categories: [수학, 확률론]
+tags: [수학, 랜덤변수, 위상수학]
 pin: true
 math: true
 mermaid: true
-image:
-  path: /commons/devices-mockup.png
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
+미완성본 추후 내용 수정 예정
 
-## Headings
+# 거리공간의 정의
 
-<!-- markdownlint-capture -->
-<!-- markdownlint-disable -->
-# H1 — heading
-{: .mt-4 .mb-0 }
+어떤 집합 $V$가 주어질 때 함수 $d : V \times V \rightarrow \mathbb{R}_{\geq 0}$ 가 세 가지 성질을 만족하면
+함수 $d$는 거리함수이다.
 
-## H2 — heading
-{: data-toc-skip='' .mt-4 .mb-0 }
+1. $\forall x, y \in V : d(x,y) = 0 \iff x = y$
+2. $\forall x, y \in V : d(x, y) = d(y, x)$
+3. $\forall x, y, z \in V : d(x, z) \leq d(x, y) + d(y, z)$
 
-### H3 — heading
-{: data-toc-skip='' .mt-4 .mb-0 }
+# 거리 공간에서의 open set의 정의
 
-#### H4 — heading
-{: data-toc-skip='' .mt-4 }
-<!-- markdownlint-restore -->
+거리 공간 $(S, d)$ 가 주어질 때,
 
-## Paragraph
+$\forall p \in S, \forall \epsilon > 0 : B_{\epsilon}(p) := \{ x \in S \ | \ d(x, p) < \epsilon \}$ 를 정의 할 수 있다.
 
-Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.
+이 때 $(S, d)$ 에서의 open set은 $B_{\epsilon}(p)$ 들의 임의의 합집합(arbitrary union) 으로 정의된다.
 
-## Lists
+# 위상공간의 정의
 
-### Ordered list
+집합 $S$ 가 주어지고  그의 power set  $P(S)$의 부분집합  $T$ 가 다음 조건을 만족하면
 
-1. Firstly
-2. Secondly
-3. Thirdly
+$T$를 위상(Topology)라 하고 $(S, T)$를 위상 공간(Topological space)라고 부른다
 
-### Unordered list
+1. $S, \phi \in T$
+2. $\forall i \in I, V_i \in T \implies \bigcup_{i \in I} V_i \in T$ (arbitrary union)
+3. $V_1, V_2 \in T \implies V_1 \cap V_2 \in T$ (유한개의 교집합)
 
-- Chapter
-  - Section
-    - Paragraph
+그리고 위상  $T$의 원소를 open set이라고 함
 
-### ToDo list
+# 함수의 정의
 
-- [ ] Job
-  - [x] Step 1
-  - [x] Step 2
-  - [ ] Step 3
+두 집합 $A, B$ 가 주어질 때, relation $f \subseteq A \times B$ 가 다음 조건을 만족하면
 
-### Description list
+$f$를 함수라고 한다.
 
-Sun
-: the star around which the earth orbits
+- $\forall a \in A, \exists !b \in B : (a, b) \in f$
 
-Moon
-: the natural satellite of the earth, visible by reflected light from the sun
+$A$의 부분집합 $S$와  $B$의 부분집합 $V$가 주어질 때
 
-## Block Quote
+- $f(S) := \{ f(x) \in B \ | \ x \in S \}$ the **image of f** under $S$ (상)
+- $f^{-1}(V) := \{ x \in A \ | \ f(x) \in V \}$ the **pre-image of f** under $V$ (역상)
 
-> This line shows the _block quote_.
+# $\epsilon - \delta$ 기반 연속 함수의 정리
 
-## Prompts
+$f : \mathbb{R} \rightarrow \mathbb{R}$ 가 $x=p$ 에서 연속이다
 
-<!-- markdownlint-capture -->
-<!-- markdownlint-disable -->
-> An example showing the `tip` type prompt.
-{: .prompt-tip }
+$\iff \lim_{x \to p} f(x) = f(p)$
 
-> An example showing the `info` type prompt.
-{: .prompt-info }
+$\iff \forall \epsilon >0, \exists \delta > 0 \text{ such that } \forall q \in (p - \delta, p + \delta), \ f(q) \in (f(p) - \epsilon, f(p) + \epsilon)$
 
-> An example showing the `warning` type prompt.
-{: .prompt-warning }
+$\iff \forall \epsilon >0, \exists \delta > 0 \text{ such that } B_{\delta}(p) \subseteq f^{-1}(B_{\epsilon}(f(p)))$ 
 
-> An example showing the `danger` type prompt.
-{: .prompt-danger }
-<!-- markdownlint-restore -->
+$\iff \forall \epsilon > 0, f^{-1}(B_{\epsilon}(f(p)) \text{ is open set including } p$
 
-## Tables
+$\iff \forall \epsilon > 0, f^{-1}(B_{\epsilon}f(p))) \text{ is open set in topological space of domain}$
 
-| Company                      | Contact          | Country |
-| :--------------------------- | :--------------- | ------: |
-| Alfreds Futterkiste          | Maria Anders     | Germany |
-| Island Trading               | Helen Bennett    |      UK |
-| Magazzini Alimentari Riuniti | Giovanni Rovelli |   Italy |
+$\iff \forall V \in \text{topological space of codomain}, \ f^{-1}(V) \in \text{topological space of domain}$
 
-## Links
+# 연속 함수의 정의
 
-<http://127.0.0.1:4000>
+두 위상공간 $(A, T_1), \ (B, T_2)$에 대해 함수 $f: A \to B$ 가 다음 조건을 만족할 때
 
-## Footnote
+$f$를 연속함수라 부른다.
 
-Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
+- $\forall V \in T_2, \ f^{-1}(V) \in T_1$
 
-## Inline code
+# 확률 공간의 정의
 
-This is an example of `Inline Code`.
+Sample space $S$, sigma($\sigma$)-field $F$, Probability measure $P$ 의 Triple $(S, F, P)$
 
-## Filepath
+# $\sigma$-field
 
-Here is the `/path/to/the/file.extend`{: .filepath}.
+집합 $S$가 주어질 때, $P(S)$의 부분집합 $F$가 세 가지 조건을 만족하면 $F$를 $\sigma$-field라 부른다.
 
-## Code blocks
+1. $S \in F$
+2. $\forall E \in F, E^c \in F$
+3. $\forall n \in \mathbb{N}, E_n \in F \implies \bigcup_{n \in \mathbb{N}} E_n \in F$
 
-### Common
+# Borel $\sigma$-field
 
-```text
-This is a common code snippet, without syntax highlight and line number.
-```
+위상공간 $(S, T)$가 주어질 때  $T$를 포함하는 가장 작은 $\sigma$-field (유일함)
 
-### Specific Language
+Borel $\sigma$-field의 원소를 Borel set이라고 한다
 
-```bash
-if [ $? -ne 0 ]; then
-  echo "The command was not successful.";
-  #do the needful / exit
-fi;
-```
+# Probability Measure
 
-### Specific filename
+집합 $S$ 위에 $\sigma$-field  $F$가 주어져 있다고 가정하자.
 
-```sass
-@import
-  "colors/light-typography",
-  "colors/dark-typography";
-```
-{: file='_sass/jekyll-theme-chirpy.scss'}
+$P : F \to [0, 1]$가 다음 조건들을 만족하면 $P$를 확률 측도(Probability Measure)라고 한다
 
-## Mathematics
+1. $\forall n \in \mathbb{N}, \, E_n \in F \, \text{ and } \, \forall n, m \in \mathbb{N} \, (n \neq m \implies E_n \cap E_m = \emptyset) \implies P\left(\bigcup_{n=1}^\infty E_n\right) = \sum_{n=1}^\infty P(E_n).$
+2. $P(S) = 1$
 
-The mathematics powered by [**MathJax**](https://www.mathjax.org/):
+# Random Variable
 
-$$
-\begin{equation}
-  \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
-  \label{eq:series}
-\end{equation}
-$$
+확률공간 $(S, F, P)$가 주어지고 함수 $X : S \to \mathbb{R}$ 이 다음 조건을 만족하면
 
-We can reference the equation as \eqref{eq:series}.
+$X$를 Random Variable이라고 한다.
 
-When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+- $\mathbb{R}$의 Borel $\sigma$-field $B(\mathbb{R})$이 주어질 때,
+$\forall B \in B(\mathbb{R}), X^{-1}(B) \in F$
 
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+# Distribution of Random Variable
 
-## Mermaid SVG
+Random Variable $X$가 주어진 시점에서 공역인 $\mathbb{R}$에 확률 측도를 주는 개념
 
-```mermaid
- gantt
-  title  Adding GANTT diagram functionality to mermaid
-  apple :a, 2017-07-20, 1w
-  banana :crit, b, 2017-07-23, 1d
-  cherry :active, c, after b a, 1d
-```
+$P_X : B(\mathbb{R}) \to [0, 1]$ 를 정의 할 수 있다.
 
-## Images
+Random Variable $X$를 활용하여 $P_X(B) := P(X^{-1}(B))$ 를 만들 수 있는데
 
-### Default (with caption)
+이 때  $P_X$를 Random Variable $X$의 분포(distribution)이라고 한다.
 
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" }
-_Full screen width and center alignment_
+# Cumulative Distribution Function
 
-### Left aligned
+Random Variable $X : (S, F, P) \to (\mathbb{R}, B(\mathbb{R}))$ 가 주어지면
 
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-75 .normal}
+$X$의 **Cumulative Distribution Function(CDF) $F_X: \mathbb{R} \to [0, 1]$**는 다음과 같이 정의된다.
 
-### Float to left
+$F_X(x) := P(X^{-1}((-\infty, x)))$
 
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-50 .left}
-Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
+CDF $F_X : \mathbb{R} \to [0, 1]$은 다음 세 가지를 만족한다.
 
-### Float to right
-
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-50 .right}
-Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
-
-### Dark/Light mode & Shadow
-
-The image below will toggle dark/light mode based on theme preference, notice it has shadows.
-
-![light mode only](/posts/20190808/devtools-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
-![dark mode only](/posts/20190808/devtools-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
-
-## Video
-
-{% include embed/youtube.html id='Balreaj8Yqs' %}
-
-## Reverse Footnote
-
-[^footnote]: The footnote source
-[^fn-nth-2]: The 2nd footnote source
+1. $\forall x, y \in \mathbb{R}, \ x \leq y \implies F(x) \leq F(y)$
+2. $\forall x \in \mathbb{R},\ \lim_{y \searrow x}F(y) = F(x)$
+3. $\lim_{x\to -\infty}F(x) = 0 \text{ and } \lim_{x \to \infty}F(x) = 1$
